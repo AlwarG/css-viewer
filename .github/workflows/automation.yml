@@ -17,8 +17,8 @@ jobs:
         run: yarn
       - name: Build project
         run: yarn build
-      # - name: Deploy
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: static-site
-      #     folder: out/
+      - name: Deploy
+        uses: actions/upload-artifact@v2
+        with:
+          name: static-site
+          folder: out/
