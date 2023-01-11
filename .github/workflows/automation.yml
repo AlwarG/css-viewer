@@ -1,0 +1,24 @@
+name: Deploy to GitHub Pages
+
+
+on:
+  push:
+    branches: [main]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get files
+        uses: actions/checkout@v2
+      - name: Installing npm dependencies
+        run: yarn
+      - name: Build project
+        run: yarn build
+      # - name: Deploy
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: static-site
+      #     folder: out/
