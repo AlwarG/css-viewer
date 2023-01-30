@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Header from './header';
+import Initial from './initial';
 import styles from '../styles/Home.module.css';
 import { useEffect, useState } from 'react';
 
@@ -23,7 +24,7 @@ function getAllassets(asset) {
  return assetObj;
 }
 
-async function getAsstesMap({ setData, setLoading, setSelectedpath }) {
+async function getAsstesMap({ setData, setLoading, setSelectedpath, setHasSearchUrl }) {
   let jsonPath = (window.location.search || '').split('?search=')[1];
 
   if (jsonPath) {
@@ -46,6 +47,7 @@ async function getAsstesMap({ setData, setLoading, setSelectedpath }) {
     setLoading(false);
     setSelectedpath(data[0]);
   }
+  setHasSearchUrl(!!jsonPath);
 }
 
 function getMainsection({ data, isLoading, selectedPath = {}, setSelectedpath }) {
@@ -64,28 +66,42 @@ function getMainsection({ data, isLoading, selectedPath = {}, setSelectedpath })
   }
 }
 
-export default function Home() {
-  const [data, setData] = useState(null);
-  const [isLoading, setLoading] = useState(false);
-  const [selectedPath, setSelectedpath] = useState({});
-  useEffect(() => {
-    getAsstesMap({ setData, setLoading, setSelectedpath });
-  }, []);
-
-  return (
-    <div className={styles.myApp}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"></link>
-      </Head>
-      <main>
+function getWholeSection({ hasSearchUrl, selectedPath, setSelectedpath, data, isLoading }) {
+  if (hasSearchUrl) {
+    return (
+      <>
         <Header
           selectedPath={selectedPath}
           setSelectedpath={setSelectedpath}
           data={data}
         />
         {getMainsection({ data, isLoading, selectedPath, setSelectedpath })}
+      </>
+    );
+  }
+  return (
+    <Initial />
+  )
+}
+
+export default function Home() {
+  const [data, setData] = useState(null);
+  const [isLoading, setLoading] = useState(false);
+  const [selectedPath, setSelectedpath] = useState({});
+  const [hasSearchUrl, setHasSearchUrl] = useState(false);
+
+  useEffect(() => {
+    getAsstesMap({ setData, setLoading, setSelectedpath, setHasSearchUrl });
+  }, []);
+
+  return (
+    <div className={styles.myApp}>
+      <Head>
+        <title>Fingerprinted CSS Assets</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"></link>
+      </Head>
+      <main>
+        {getWholeSection({ hasSearchUrl, selectedPath, setSelectedpath, data, isLoading, selectedPath, setSelectedpath, setHasSearchUrl })}
       </main>
     </div>
   )
