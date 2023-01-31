@@ -1,6 +1,9 @@
 # CSS Viewer
 The [tool](https://fingerprinted-css.vercel.app) to view the available css styles from the assets map json of the your application
 
+## Inspiration
+This is the inspiration from [CSS Stats](https://github.com/cssstats/cssstats)
+
 
 ## Development
 
