@@ -12,15 +12,22 @@ function handleInputChange({ target }, setJsonPath) {
   setJsonPath(target.value);
 }
 
+let logoStyle = {
+  width: '275px',
+  margin: '0 auto',
+  textAlign: 'center',
+  fontSize: '30px',
+  height: 'auto'
+}
+
 export default function Initial() {
   const [jsonPath, setJsonPath] = useState('');
   return (
     <div className={`modal is-active`}>
-      <div className="modal-background"></div>
       <div className="modal-content">
-        <header className="modal-card-head">
-          <h1 className="modal-card-title has-text-weight-bold">CSS Assets Viewer</h1>
-        </header>
+        <div className={styles.assetsLogo} style={logoStyle}>
+          CSS Viewer
+        </div>
         <section className="modal-card-body">
         <form className="field has-addons is-justify-content-center mb-0" onSubmit={validateFormWithJS}>
           <div className="control">

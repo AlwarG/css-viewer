@@ -52,7 +52,7 @@ export default function Home(props) {
   return (
     <div className="is-flex is-align-items-center mt-4">
       <div className={styles.assetsLogo}>
-        CSS Assets
+        CSS Viewer
       </div>
       <form className="field has-addons is-justify-content-center mb-0" onSubmit={validateFormWithJS}>
         <div className="control">
@@ -89,11 +89,11 @@ export default function Home(props) {
         <div className="modal-background"></div>
         <div className="modal-content">
           <header className="modal-card-head">
-            <h1 className="modal-card-title has-text-weight-bold">CSS Assets Viewer</h1>
+            <h1 className="modal-card-title has-text-weight-bold">CSS Viewer</h1>
             <button className="delete" aria-label="close" onClick={() => setShowInfo('')}></button>
           </header>
           <section className="modal-card-body">
-            CSS Assets Viewer is a tool on which the user can view the CSS Styles from various CSS Paths.
+            CSS Viewer is a tool on which the user can view the CSS Styles from various CSS Paths.
             These CSS Paths can be obtained from the assetsMap JSON of your application.
             <br />
             <br />

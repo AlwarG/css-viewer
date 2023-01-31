@@ -97,7 +97,7 @@ export default function Home() {
   return (
     <div className={styles.myApp}>
       <Head>
-        <title>Fingerprinted CSS Assets</title>
+        <title>CSS Viewer</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"></link>
       </Head>
       <main>

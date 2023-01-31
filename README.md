@@ -1,4 +1,4 @@
-# CSS Assets Viewer
+# CSS Viewer
 The [tool](https://fingerprinted-css.vercel.app) to view the available css styles from the assets map json of the your application
 
 
